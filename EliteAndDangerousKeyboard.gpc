@@ -1,0 +1,823 @@
+#pragma METAINFO("Elite Pad Figtht Multi-Combos With Keybboard", 1, 02 ,"deepchaos66@hotmail.co.uk")
+#include <xb1.gph> // for XB1
+#include <keyboard.gph> // for PC
+#define TRUE   !FALSE
+
+bool DetectShortP1 = FALSE;
+bool DetectShortP2 = FALSE;
+bool DetectShortP3 = FALSE;
+bool DetectShortP4 = FALSE;
+
+bool PressedReleasedP1 = FALSE;
+bool PressedReleasedP2 = FALSE;
+bool PressedReleasedP3 = FALSE;
+bool PressedReleasedP4 = FALSE;
+
+// Paddle Defination
+//
+// Front Right P1
+// Front Left  P3
+// Rear Right  P2
+// Rear Left   P4
+
+main {
+	//-----------------------------------------------------
+	// Elite Controller Paddle remapper
+	//-----------------------------------------------------
+    //P1 Detection Fronf Right
+	if (get_actual(XB1_P1)) 
+	{
+        if (check_active(XB1_P1, 1000) && (!PressedReleasedP1)) 
+		{
+            PressedReleasedP1 = TRUE;
+			combo_run(LongP1);
+        } 
+		else 
+		{
+            DetectShortP1 = FALSE; 
+        }
+    }
+    if ((event_release(XB1_P1) && (!LongP1) && (!PressedReleasedP1) )) 
+	{
+        PressedReleasedP1 = TRUE;     
+		combo_run(ShortP1);
+    }
+	// Detect Paddle release P1 Fronf Right
+	if(is_release(XB1_P1)) 
+	{
+        PressedReleasedP1 = FALSE;
+    }
+	
+	//P2 Detection
+	if (get_actual(XB1_P2)) 
+	{
+        if (check_active(XB1_P2, 1000) && (!PressedReleasedP2)) 
+		{
+            PressedReleasedP2 = TRUE;
+			combo_run(LongP2);
+        } 
+		else 
+		{
+            DetectShortP2 = FALSE; 
+        }
+    }
+    if ((event_release(XB1_P2) && (!LongP2) && (!PressedReleasedP2) )) 
+	{
+        PressedReleasedP2 = TRUE;     
+		combo_run(ShortP2);
+    }
+	// Detect Paddle release P2 Rear Right
+	if(is_release(XB1_P2)) 
+	{
+        PressedReleasedP2 = FALSE;
+    }
+	
+	//P3 Detection Front Left
+	if (get_actual(XB1_P3)) 
+	{
+        if (check_active(XB1_P3, 1000) && (!PressedReleasedP3)) 
+		{
+            PressedReleasedP3 = TRUE;
+			combo_run(LongP3);
+        } 
+		else 
+		{
+            DetectShortP3 = FALSE; 
+        }
+    } 
+    if ((event_release(XB1_P3) && (!LongP3) && (!PressedReleasedP3) )) 
+	{
+        PressedReleasedP3 = TRUE;     
+		combo_run(ShortP3);
+    }
+	// Detect Paddle release 3 Front Left
+	if(is_release(XB1_P3)) 
+	{
+        PressedReleasedP3 = FALSE;
+    }
+	
+	//P4 Detection Rear Left
+	if (get_actual(XB1_P4)) 
+	{
+        if (check_active(XB1_P4, 1000) && (!PressedReleasedP4)) 
+		{
+            PressedReleasedP4 = TRUE;
+			combo_run(LongP4);
+        } 
+		else 
+		{
+            DetectShortP4 = FALSE; 
+        }
+    } 
+    if ((event_release(XB1_P4) && (!LongP4) && (!PressedReleasedP4) )) 
+	{
+        PressedReleasedP4 = TRUE;     
+		combo_run(ShortP4);
+    }
+	// Detect Paddle release P4 Front Left
+	if(is_release(XB1_P4)) 
+	{
+        PressedReleasedP4 = FALSE;
+    }
+	
+	//-----------------------------------------------------
+	// Keyoard Comobos
+	//-----------------------------------------------------
+	// ED BOOST
+    if(key_press(KEY_RETURNORENTER)) {
+        combo_run(MyCombo_XB_B_ON);
+    }
+	//XB Y // ED JUMP
+    if(key_press(KEY_Y)) {
+        combo_run(MyCombo_XB_Y_ON);
+    }	
+	//ED Primary Fire
+	if(key_press(KEY_SPACEBAR)) {
+        combo_run(MyCombo_XB_RT_ON);
+    }
+	//ED Secondary Fire (Missiles)
+	if(key_press(KEY_M)) {
+        combo_run(MyCombo_XB_LT_ON);
+    }
+	//ED -100 Throttle
+	if(key_press(KEY_1)) {
+        combo_run(MyCombo_XB_LS_X_ON);
+    }
+	//ED -75 Throttle
+	if(key_press(KEY_2)) {
+        combo_run(MyCombo_XB_LS_Y_ON);
+    }
+	//ED -50 Throttle
+	if(key_press(KEY_3)) {
+        combo_run(MyCombo_XB_LS_Y_X_ON);
+    }
+	//ED -25 Throttle
+	if(key_press(KEY_4)) {
+        combo_run(MyCombo_XB_LS_Y_B_ON);
+    }
+	//ED 0 Throttle
+	if(key_press(KEY_5)) {
+        combo_run(MyCombo_XB_LB_RB_ON);
+    }
+	//ED 25 Throttle
+	if(key_press(KEY_6)) {
+        combo_run(MyCombo_XB_LS_A_X_ON);
+    }
+	//ED 50 Throttle
+	if(key_press(KEY_7)) {
+        combo_run(MyCombo_XB_LS_A_B_ON);
+    }
+	//ED 75 Throttle
+	if(key_press(KEY_8)) {
+        combo_run(MyCombo_XB_LS_X_B_ON);
+    }
+	//ED 100 Throttle
+	if(key_press(KEY_9)) {
+        combo_run(MyCombo_XB_LS_Y_A_ON);
+    }
+	//ED Flight Assist
+	if(key_press(KEY_A)) {
+        combo_run(MyCombo_XB_X_Y_ON);
+    }
+	//ED Previous Sub-System
+	if(key_press(KEY_COMMA)) {
+        combo_run(MyCombo_XB_RS_LS_LEFT_ON);
+    }
+	//ED Next Sub-System
+	if(key_press(KEY_PERIOD)) {
+        combo_run(MyCombo_XB_RS_LS_RIGHT_ON);
+    }
+	//ED Previous Fire Group
+	if(key_press(KEY_OPENBRACKET)) {
+        combo_run(MyCombo_XB_B_X_ON);
+    }
+	//ED Next Fire Group
+	if(key_press(KEY_CLOSEBRACKET)) {
+        combo_run(MyCombo_XB_B_Y_ON);
+    }
+	//ED Silent Running
+	if(key_press(KEY_R)) {
+        combo_run(MyCombo_XB_Y_Then_LB_ON);
+    }
+	//ED Heat Sink
+	if(key_press(KEY_H)) {
+        combo_run(MyCombo_XB_A_X_ON);
+    }
+	//ED Lights
+	if(key_press(KEY_L)) {
+        combo_run(MyCombo_XB_B_THEN_LEFT_ON);
+    }
+	//ED Landing Gear
+	if(key_press(KEY_G)) {
+        combo_run(MyCombo_XB_B_THEN_DOWN_ON);
+    }
+	//ED Cargo Scoop
+	if(key_press(KEY_S)) {
+        combo_run(MyCombo_XB_B_THEN_UP_ON);
+    }
+	//ED Classified Camera
+	if(key_press(KEY_I)) {
+        combo_run(MyCombo_XB_B_THEN_RIGHT_ON);
+    }
+	//ED Chaff
+	if(key_press(KEY_C)) {
+        combo_run(MyCombo_XB_LS_A_ON);
+    }
+	//ED Cell Bank
+	if(key_press(KEY_B)) {
+        combo_run(MyCombo_XB_A_B_ON);
+    }
+	//ED Target Panel
+	if(key_press(KEY_F7)) {
+        combo_run(MyCombo_XB_A_B_X_ON);
+    }
+	//ED Comms Panel.
+	if(key_press(KEY_F8)) {
+        combo_run(MyCombo_XB_X_Y_B_ON);
+    }
+	//ED Systems Panel.
+	if(key_press(KEY_F9)) {
+        combo_run(MyCombo_XB_A_B_Y_ON);
+    }
+	//ED Role Panel.
+	if(key_press(KEY_F10)) {
+        combo_run(MyCombo_XB_X_Y_A_ON);
+    }
+	//ED Fighter Dock.
+	if(key_press(KEY_D)) {
+        combo_run(MyCombo_XB_RS_A_ON);
+    }
+	//ED Fighter Defensive.
+	if(key_press(KEY_P)) {
+        combo_run(MyCombo_XB_RS_B_ON);
+    }
+	//ED Fighter Agressive.
+	if(key_press(KEY_K)) {
+        combo_run(MyCombo_XB_RS_X_ON);
+    }
+	//ED Rotation Correction.
+	if(key_press(KEY_Z)) {
+        combo_run(MyCombo_XB_RS_X_B_ON);
+    }
+	//ED Target Item
+	//if(key_press()) {
+    //    combo_run();
+    //}
+	//ED Wingmans Target.
+	if(key_press(KEY_Q)) {
+        combo_run(MyCombo_XB_RS_LS_LT_ON);
+    }
+	//ED Target next system.
+	if(key_press(KEY_F5)) {
+        combo_run(MyCombo_XB_RS_LS_UP_ON);
+    }
+	//ED Fighter Focus Target.
+	if(key_press(KEY_F)) {
+        combo_run(MyCombo_XB_RS_LS_UP_X_ON);
+    }
+	//ED Fighter Hold Fire.
+	if(key_press(KEY_E)) {
+        combo_run(MyCombo_XB_RS_LS_DOWN_ON);
+    }
+	//ED Fighter Hold Position.
+	if(key_press(KEY_T)) {
+        combo_run(MyCombo_XB_RS_LS_UP_A_ON);
+    }
+	//ED Fighter Follow.
+	if(key_press(KEY_W)) {
+        combo_run(MyCombo_XB_RS_LS_UP_B_ON);
+    }
+	//ED Fighter Open Orders.	
+	if(key_press(KEY_N)) {
+        combo_run(MyCombo_XB_RS_LS_UP_Y_ON);
+    }
+}
+//ED Fighter Hold Position
+combo MyCombo_XB_RS_LS_UP_A_ON {
+    set_val(XB1_RS, 100);
+    set_val(XB1_LS, 100);
+	set_val(XB1_UP, 100);
+	set_val(XB1_A, 100);
+	wait(150);
+	set_val(XB1_RS, 0);
+    set_val(XB1_LS, 0);
+	set_val(XB1_UP, 0);
+	set_val(XB1_A, 0);
+}
+//ED Fighter Follow
+combo MyCombo_XB_RS_LS_UP_B_ON {
+    set_val(XB1_RS, 100);
+    set_val(XB1_LS, 100);
+	set_val(XB1_UP, 100);
+	set_val(XB1_B, 100);
+	wait(150);
+	set_val(XB1_RS, 0);
+    set_val(XB1_LS, 0);
+	set_val(XB1_UP, 0);
+	set_val(XB1_B, 0);
+}
+//ED Fighter Open Orders	
+combo MyCombo_XB_RS_LS_UP_Y_ON {
+    set_val(XB1_RS, 100);
+    set_val(XB1_LS, 100);
+	set_val(XB1_UP, 100);
+	set_val(XB1_Y, 100);
+	wait(150);
+	set_val(XB1_RS, 0);
+    set_val(XB1_LS, 0);
+	set_val(XB1_UP, 0);
+	set_val(XB1_Y, 0);
+}
+//ED Fighter Focus Target.
+combo MyCombo_XB_RS_LS_UP_X_ON {
+    set_val(XB1_RS, 100);
+    set_val(XB1_LS, 100);
+	set_val(XB1_UP, 100);
+	set_val(XB1_X, 100);
+	wait(150);
+	set_val(XB1_RS, 0);
+    set_val(XB1_LS, 0);
+	set_val(XB1_UP, 0);
+	set_val(XB1_X, 0);
+}
+//ED Fighter Hold Fire
+combo MyCombo_XB_RS_LS_DOWN_ON {
+	printf("Cease Fire Combo");
+    set_val(XB1_RS, 100);
+    set_val(XB1_LS, 100);
+	set_val(XB1_DOWN, 100);
+	wait(150);
+	set_val(XB1_RS, 0);
+    set_val(XB1_LS, 0);
+	set_val(XB1_DOWN, 0);
+}
+//ED Wingmans Target
+combo MyCombo_XB_RS_LS_LT_ON {
+    set_val(XB1_RS, 100);
+    set_val(XB1_LS, 100);
+	set_val(XB1_LT, 100);
+	wait(150);
+	set_val(XB1_RS,0);
+    set_val(XB1_LS, 0);
+	set_val(XB1_RT, 0);
+}
+//ED Target next system
+combo MyCombo_XB_RS_LS_UP_ON {
+    set_val(XB1_RS, 100);
+    set_val(XB1_LS, 100);
+	set_val(XB1_UP, 100);
+	wait(150);
+	set_val(XB1_RS,0);
+    set_val(XB1_LS, 0);
+	set_val(XB1_UP, 0);
+}
+//ED Previous Sub-System
+combo MyCombo_XB_RS_LS_LEFT_ON {
+    set_val(XB1_RS, 100);
+    set_val(XB1_LS, 100);
+	set_val(XB1_LEFT, 100);
+	wait(150);
+	set_val(XB1_RS,0);
+    set_val(XB1_LS, 0);
+	set_val(XB1_LEFT, 0);
+}
+//ED Next Sub-System
+combo MyCombo_XB_RS_LS_RIGHT_ON {
+    set_val(XB1_RS, 100);
+    set_val(XB1_LS, 100);
+	set_val(XB1_RIGHT, 100);
+	wait(150);
+	set_val(XB1_RS,0);
+    set_val(XB1_LS, 0);
+	set_val(XB1_RIGHT, 0);
+}
+//ED Rotation Correction
+combo MyCombo_XB_RS_X_B_ON {
+    set_val(XB1_RS, 100);
+    set_val(XB1_X, 100);
+	set_val(XB1_B, 100);
+	wait(150);
+	set_val(XB1_RS,0);
+    set_val(XB1_X, 0);
+	set_val(XB1_B, 0);
+}
+//ED Fighter Dock
+combo MyCombo_XB_RS_A_ON {
+    set_val(XB1_RS, 100);
+    set_val(XB1_A, 100);
+	wait(150);
+	set_val(XB1_RS, 0);
+    set_val(XB1_A, 0);
+}
+//ED Fighter Defensive
+combo MyCombo_XB_RS_B_ON {
+    set_val(XB1_RS, 100);
+    set_val(XB1_B, 100);
+	wait(150);
+	set_val(XB1_RS, 0);
+    set_val(XB1_B, 0);
+}
+//ED Fighter Agressive
+combo MyCombo_XB_RS_X_ON {
+    set_val(XB1_RS, 100);
+    set_val(XB1_X, 100);
+	wait(150);
+	set_val(XB1_RS, 0);
+    set_val(XB1_X, 0);
+}
+combo MyCombo_XB_A_B_X_ON {
+	set_val(XB1_A, 100);
+    set_val(XB1_B, 100);
+	set_val(XB1_X, 100);
+	wait(150);
+	set_val(XB1_A, 0);
+    set_val(XB1_B, 0);
+	set_val(XB1_X, 0);
+}
+//ED Comms Panel
+combo MyCombo_XB_X_Y_B_ON {
+    set_val(XB1_X, 100);
+    set_val(XB1_Y, 100);
+	set_val(XB1_B, 100);
+	wait(150);
+	set_val(XB1_X, 0);
+    set_val(XB1_Y, 0);
+	set_val(XB1_B, 0);
+}
+//ED Systems Panel
+combo MyCombo_XB_A_B_Y_ON {
+    set_val(XB1_A, 100);
+    set_val(XB1_B, 100);
+	set_val(XB1_Y, 100);
+	wait(150);
+	set_val(XB1_A, 0);
+    set_val(XB1_B, 0);
+	set_val(XB1_Y, 0);
+}
+//ED Role Panel
+combo MyCombo_XB_X_Y_A_ON {
+    set_val(XB1_X, 100);
+    set_val(XB1_Y, 100);
+	set_val(XB1_A, 100);
+	wait(150);
+	set_val(XB1_X, 0);
+    set_val(XB1_Y, 0);
+	set_val(XB1_A, 0);
+}
+//Lights
+combo MyCombo_XB_B_THEN_LEFT_ON {
+	set_val(XB1_RS, 100);
+	set_val(XB1_LS, 100);
+	set_val(XB1_Y, 100);
+	wait(500);
+	set_val(XB1_RS, 0);
+	set_val(XB1_LS, 0);
+	set_val(XB1_Y, 0);
+}
+// Gear
+combo MyCombo_XB_B_THEN_DOWN_ON {
+	set_val(XB1_RS, 100);
+	set_val(XB1_LS, 100);
+	set_val(XB1_B, 100);
+	wait(500);
+	set_val(XB1_RS, 0);
+	set_val(XB1_LS, 0);
+	set_val(XB1_B, 0);
+}
+// Cargo
+combo MyCombo_XB_B_THEN_UP_ON {
+	set_val(XB1_RS, 100);
+	set_val(XB1_LS, 100);
+	set_val(XB1_A, 100);
+	wait(500);
+	set_val(XB1_RS, 0);
+	set_val(XB1_LS, 0);
+	set_val(XB1_A, 0);
+}
+// Camera
+combo MyCombo_XB_B_THEN_RIGHT_ON {
+	set_val(XB1_RS, 100);
+	set_val(XB1_LS, 100);
+	set_val(XB1_X, 100);
+	wait(500);
+	set_val(XB1_RS, 0);
+	set_val(XB1_LS, 0);
+	set_val(XB1_X, 0);
+}
+//Silent running
+combo MyCombo_XB_Y_Then_LB_ON {
+	set_val(XB1_RS, 100);
+	set_val(XB1_LS, 100);
+	set_val(XB1_RT, 100);
+	wait(500);
+	set_val(XB1_RS, 0);
+	set_val(XB1_LS, 0);
+	set_val(XB1_RT, 0);
+}
+//ED Chaff
+combo MyCombo_XB_LS_A_ON {
+    set_val(XB1_LS, 100);
+    set_val(XB1_A, 100);
+	wait(150);
+	set_val(XB1_LS, 0);
+    set_val(XB1_A, 0);
+}
+//ED Cell Bank
+combo MyCombo_XB_A_B_ON {
+    set_val(XB1_A, 100);
+    set_val(XB1_B, 100);
+	wait(150);
+	set_val(XB1_A, 0);
+    set_val(XB1_B, 0);
+}
+//ED Heat Sink
+combo MyCombo_XB_A_X_ON {
+    set_val(XB1_A, 100);
+    set_val(XB1_X, 100);
+	wait(150);
+	set_val(XB1_A, 0);
+    set_val(XB1_X, 0);
+}
+//ED Flight Assist
+combo MyCombo_XB_X_Y_ON {
+	set_val(XB1_X, 100);
+	set_val(XB1_Y, 100);
+	wait(150);
+	set_val(XB1_X, 0);
+	set_val(XB1_Y, 0);
+}
+//ED Previous Fire Group
+combo MyCombo_XB_B_X_ON {
+	set_val(XB1_B, 100);
+	set_val(XB1_X, 100);
+	wait(150);
+	set_val(XB1_B, 0);
+	set_val(XB1_X, 0);
+}
+//ED Next Fire Group
+combo MyCombo_XB_B_Y_ON {
+	set_val(XB1_B, 100);
+	set_val(XB1_Y, 100);
+	wait(150);
+	set_val(XB1_B, 0);
+	set_val(XB1_Y, 0);
+}
+//ED -50 Throttle
+combo MyCombo_XB_LS_Y_X_ON {
+	set_val(XB1_LS, 100);
+	set_val(XB1_Y, 100);
+	set_val(XB1_X, 100);
+	wait(150);
+	set_val(XB1_LS, 0);
+	set_val(XB1_Y, 0);
+	set_val(XB1_X, 0);
+}
+//ED -25 Throttle
+combo MyCombo_XB_LS_Y_B_ON {
+	set_val(XB1_LS, 100);
+	set_val(XB1_Y, 100);
+	set_val(XB1_B, 100);
+	wait(150);
+	set_val(XB1_LS, 0);
+	set_val(XB1_Y, 0);
+	set_val(XB1_B, 0);
+}
+//ED 100 Throttle
+combo MyCombo_XB_LS_Y_A_ON {
+	set_val(XB1_LS, 100);
+	set_val(XB1_Y, 100);
+	set_val(XB1_A, 100);
+	wait(150);
+	set_val(XB1_LS, 0);
+	set_val(XB1_Y, 0);
+	set_val(XB1_A, 0);
+}
+//ED 25 Throttle
+combo MyCombo_XB_LS_A_X_ON {
+	set_val(XB1_LS, 100);
+	set_val(XB1_A, 100);
+	set_val(XB1_X, 100);
+	wait(150);
+	set_val(XB1_LS, 0);
+	set_val(XB1_A, 0);
+	set_val(XB1_X, 0);
+}
+//ED 50 Throttle
+combo MyCombo_XB_LS_A_B_ON {
+	set_val(XB1_LS, 100);
+	set_val(XB1_A, 100);
+	set_val(XB1_B, 100);
+	wait(150);
+	set_val(XB1_LS, 0);
+	set_val(XB1_A, 0);
+	set_val(XB1_B, 0);
+}
+//ED 75 Throttle
+combo MyCombo_XB_LS_X_B_ON {
+	set_val(XB1_LS, 100);
+	set_val(XB1_X, 100);
+	set_val(XB1_B, 100);
+	wait(150);
+	set_val(XB1_LS, 0);
+	set_val(XB1_X, 0);
+	set_val(XB1_B, 0);
+}
+//ED 0 Throttle
+combo MyCombo_XB_LB_RB_ON {
+	set_val(XB1_LB, 100);
+	set_val(XB1_RB, 100);
+	wait(150);
+	set_val(XB1_LB, 0);
+	set_val(XB1_RB, 0);
+}
+//ED -100 Throttle
+combo MyCombo_XB_LS_X_ON {
+	set_val(XB1_LS, 100);
+	set_val(XB1_X, 100);
+	wait(150);
+	set_val(XB1_LS, 0);
+	set_val(XB1_X, 0);
+}
+//ED -75 Throttle
+combo MyCombo_XB_LS_Y_ON {
+	set_val(XB1_LS, 100);
+	set_val(XB1_Y, 100);
+	wait(150);
+	set_val(XB1_LS, 0);
+	set_val(XB1_Y, 0);
+}
+//ED Secondary Fire (Missiles)
+combo MyCombo_XB_LT_ON {
+	set_val(XB1_LT, 100);
+	wait(150);
+	set_val(XB1_LT, 0);
+}
+//ED Primary Fire
+combo MyCombo_XB_RT_ON {
+	set_val(XB1_RT, 100);
+	wait(150);
+	set_val(XB1_RT, 0);
+} 
+//XB Y // ED JUMP
+combo MyCombo_XB_Y_ON {
+	set_val(XB1_Y, 100);
+	wait(150);
+	set_val(XB1_Y, 0);
+}
+// ED BOOST
+combo MyCombo_XB_B_ON {
+	set_val(XB1_B, 100);
+	wait(70);
+	set_val(XB1_B, 0);
+}
+// 1. Combo for short P1 press
+combo ShortP1 {
+	//Next Sub-system
+	set_val(XB1_X, 100);
+    set_val(XB1_Y, 100);
+	wait(150);
+	set_val(XB1_X,0);
+    set_val(XB1_Y, 0);
+}
+// 2. Combo for long P1 press
+
+combo LongP1 {
+	// Fighter Focus Target
+	set_val(XB1_RS, 100);
+    set_val(XB1_LS, 100);
+	set_val(XB1_UP, 100);
+	set_val(XB1_X, 100);
+	wait(150);
+	set_val(XB1_RS, 0);
+    set_val(XB1_LS, 0);
+	set_val(XB1_UP, 0);
+	set_val(XB1_X, 0);
+	wait(70);
+}
+// 3. Combo for short P2 press
+combo ShortP2 {
+	//Heat Sink
+	set_val(XB1_A, 100);
+    set_val(XB1_X, 100);
+	wait(150);
+	set_val(XB1_A, 0);
+    set_val(XB1_X, 0);
+	wait(70);
+}
+// 4. Combo for long P2 press 
+combo LongP2 {
+	// Pips to Systems
+	set_val(XB1_LEFT, 100);
+	wait(70);
+	set_val(XB1_LEFT, 0);
+	wait(70);
+	set_val(XB1_LEFT, 100);
+	wait(70);
+	set_val(XB1_LEFT, 0);
+	wait(70);
+	
+	//Heat Sink
+	set_val(XB1_A, 100);
+    set_val(XB1_X, 100);
+	wait(150);
+	set_val(XB1_A, 0);
+    set_val(XB1_X, 0);
+	wait(150);
+	
+	// Cell Bank
+	set_val(XB1_A, 100);
+    set_val(XB1_B, 100);
+	wait(150);
+	set_val(XB1_A, 0);
+    set_val(XB1_B, 0);
+	wait(70);
+}
+// 5. Combo for short P3 press
+combo ShortP3 {
+	// Prev Sub System
+	set_val(XB1_A, 100);
+    set_val(XB1_Y, 100);
+	wait(150);
+    set_val(XB1_A, 0);
+	set_val(XB1_Y, 0);
+	wait(70);
+}
+// 6. Combo for long P3 press 
+combo LongP3 {
+    // Y,A Press is specifically pressed 6 times and is bound
+	// in game to previous sub-system, this selects the 
+	// most enemy ships powerplant    
+	set_val(XB1_A, 100);
+    set_val(XB1_Y, 100);
+	wait(150);
+    set_val(XB1_A, 0);
+	set_val(XB1_Y, 0);
+	wait(70);
+	set_val(XB1_A, 100);
+    set_val(XB1_Y, 100);
+	wait(150);
+    set_val(XB1_A, 0);
+	set_val(XB1_Y, 0);
+	wait(70);
+	set_val(XB1_A, 100);
+    set_val(XB1_Y, 100);
+	wait(150);
+    set_val(XB1_A, 0);
+	set_val(XB1_Y, 0);
+	wait(70);
+	set_val(XB1_A, 100);
+    set_val(XB1_Y, 100);
+	wait(150);
+    set_val(XB1_A, 0);
+	set_val(XB1_Y, 0);
+	wait(70);
+	set_val(XB1_A, 100);
+    set_val(XB1_Y, 100);
+	wait(150);
+    set_val(XB1_A, 0);
+	set_val(XB1_Y, 0);
+	wait(70);
+	set_val(XB1_A, 100);
+    set_val(XB1_Y, 100);
+	wait(150);
+    set_val(XB1_A, 0);
+	set_val(XB1_Y, 0);
+	wait(70);
+}
+
+// 7. Combo for short P4 press
+combo ShortP4 {
+	// Toggle Flight Assist
+    set_val(XB1_LS, 100);
+    set_val(XB1_B, 100);
+	wait(70);
+    set_val(XB1_LS, 0);
+    set_val(XB1_B, 0);
+	wait(70);
+}
+
+// 8. Combo for long P4 press
+combo LongP4 {
+	// Chaff
+	set_val(XB1_LS, 100);
+    set_val(XB1_A, 100);
+	wait(150);
+	set_val(XB1_LS, 0);
+    set_val(XB1_A, 0);
+	wait(70);
+}
+
+bool key_press(uint8 key) {
+    static uint8 last = 0;
+ 
+    if(key_status(key)) {
+        if(key != last) {
+            last = key;
+            return(!FALSE);
+        }
+    } else if(key == last) {
+        last = 0;
+    }
+    return(FALSE);
+}
+ 
